@@ -74,7 +74,10 @@ Vagrant.configure(2) do |config|
         cd /home/vagrant/avanti/avanti-cli
         npm install
         gulp build
-        sudo npm -g install /home/vagrant/avanti/avanti-core /home/vagrant/avanti/avanti-cli
+        cd /home/vagrant/avanti/avanti-api
+        npm install
+        gulp build
+        sudo npm -g install /home/vagrant/avanti/avanti-core /home/vagrant/avanti/avanti-cli /home/vagrant/avanti/avanti-api
     SCRIPT
 
     config.vm.provision "shell", inline: $script, privileged: false

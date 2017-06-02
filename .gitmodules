@@ -4,3 +4,6 @@
 [submodule "avanti-cli"]
 	path = avanti-cli
 	url = git@github.com:IONlu/avanti-cli.git
+[submodule "avanti-api"]
+	path = avanti-api
+	url = git@github.com:IONlu/avanti-api.git
