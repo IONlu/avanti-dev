@@ -8,6 +8,7 @@ Vagrant.configure(2) do |config|
     config.vm.box = "dattn/ubuntu16"
 
     config.vm.network :forwarded_port, guest: 80, host: 8080
+    config.vm.network :forwarded_port, guest: 3000, host: 3000
 
     config.vm.synced_folder ".", "/home/vagrant/avanti/",
         owner: "vagrant",
