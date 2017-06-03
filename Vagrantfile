@@ -43,9 +43,11 @@ Vagrant.configure(2) do |config|
         sudo apt-get -y dist-upgrade
 
         # install different php versions
-        sudo apt-get -y install php5.6 php5.6-xml php5.6-curl php5.6-soap php5.6-mysql php5.6-fpm
-        sudo apt-get -y install php7.0 php7.0-xml php7.0-curl php7.0-soap php7.0-mysql php7.0-fpm
-        sudo apt-get -y install php7.1 php7.1-xml php7.1-curl php7.1-soap php7.1-mysql php7.1-fpm
+        for VERSION in "5.6" "7.0" "7.1"; do
+            sudo apt-get -y install \
+            php$VERSION php$VERSION-xml php$VERSION-curl \
+            php$VERSION-soap php$VERSION-mysql php$VERSION-fpm
+        done
 
         # install apache
         sudo apt-get -y install apache2 libapache2-mod-fastcgi cronolog
@@ -69,16 +71,18 @@ Vagrant.configure(2) do |config|
         sudo apt-get -y autoremove
 
         # install packages
-        cd /home/vagrant/avanti/avanti-core
-        npm install
-        gulp build
-        cd /home/vagrant/avanti/avanti-cli
-        npm install
-        gulp build
-        cd /home/vagrant/avanti/avanti-api
-        npm install
-        gulp build
-        sudo npm -g install /home/vagrant/avanti/avanti-core /home/vagrant/avanti/avanti-cli /home/vagrant/avanti/avanti-api
+        AVANTI_PATH="/home/vagrant/avanti/"
+        for MODULE in "avanti-core" "avanti-cli" "avanti-api"; do
+            if [ -d "/home/vagrant/.config" ]; then
+                sudo chown -R $USER:$(id -gn $USER) /home/vagrant/.config
+            fi
+            cd $AVANTI_PATH$MODULE
+            npm install
+            sudo npm link
+            if [ "$MODULE" != "avanti-core" ]; then
+                sudo npm link avanti-core
+            fi
+        done
     SCRIPT
 
     config.vm.provision "shell", inline: $script, privileged: false
