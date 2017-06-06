@@ -1,9 +1,12 @@
 [submodule "avanti-core"]
 	path = avanti-core
 	url = git@github.com:IONlu/avanti-core.git
+	branch = develop
 [submodule "avanti-cli"]
 	path = avanti-cli
 	url = git@github.com:IONlu/avanti-cli.git
+	branch = develop
 [submodule "avanti-api"]
 	path = avanti-api
 	url = git@github.com:IONlu/avanti-api.git
+	branch = develop
