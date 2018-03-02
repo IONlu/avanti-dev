@@ -36,7 +36,8 @@ Vagrant.configure(2) do |config|
     end
 
     $script = <<-SCRIPT
-        curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+        # install apt repositories
+        curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
         sudo add-apt-repository -y ppa:ondrej/php
         sudo add-apt-repository -y ppa:certbot/certbot
         sudo apt-get -y update
@@ -56,7 +57,6 @@ Vagrant.configure(2) do |config|
 
         # install nodejs and npm
         sudo apt-get -y install build-essential nodejs
-        sudo npm -g install npm@4
 
         # install dev tools
         sudo npm install -g gulp knex
