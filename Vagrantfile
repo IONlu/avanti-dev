@@ -40,7 +40,6 @@ Vagrant.configure(2) do |config|
         sudo add-apt-repository -y ppa:ondrej/php
         sudo add-apt-repository -y ppa:certbot/certbot
         sudo apt-get -y update
-        sudo apt-get -y dist-upgrade
 
         # install different php versions
         for VERSION in "5.6" "7.0" "7.1"; do
