@@ -43,7 +43,7 @@ Vagrant.configure(2) do |config|
         sudo apt-get -y update
 
         # install different php versions
-        for VERSION in "5.6" "7.0" "7.1"; do
+        for VERSION in "5.6" "7.0" "7.1" "7.2"; do
             sudo apt-get -y install \
             php$VERSION php$VERSION-xml php$VERSION-curl \
             php$VERSION-soap php$VERSION-mysql php$VERSION-fpm
