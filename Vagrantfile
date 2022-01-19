@@ -78,6 +78,10 @@ Vagrant.configure(2) do |config|
         sudo npm install -g gulp knex
         sudo apt-get -y install sqlite3
 
+        # install phyton certbot plugin
+        sudo apt-get update
+        sudo apt-get install -y python3-certbot-apache
+
         # enable proxy
         sudo a2enmod rewrite proxy proxy_fcgi
         sudo service apache2 restart
@@ -89,7 +93,7 @@ Vagrant.configure(2) do |config|
         sudo apt-get update
         sudo apt-get install python2.7
         sudo ln -s /usr/bin/python2.7 /usr/bin/python
-        
+
         # install packages
         AVANTI_PATH="/home/vagrant/avanti/"
         for MODULE in "avanti-core" "avanti-cli" "avanti-api"; do
